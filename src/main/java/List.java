@@ -1,5 +1,5 @@
 public class List {
-    private String[] tasks = new String[100];
+    private final String[] tasks = new String[100];
     private int noTasks = 0;
 
     public void addTask(String task) {
