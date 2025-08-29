@@ -10,15 +10,21 @@ public class List {
 
     public void listTasks() {
         for (int i = 0; i < this.noTasks; i += 1) {
-            System.out.println(i + ". " + this.tasks[i].getTaskDescription());
+            String checkbox = "[ ]";
+            if (this.tasks[i].IsMarked()) {
+                checkbox = "[X]";
+            }
+            System.out.println((i + 1) + "." + checkbox + ' ' + this.tasks[i].getTaskDescription());
         }
     }
 
     public void markTaskAsDone(int id) {
         this.tasks[id].setIsMarked(true);
+        System.out.println("marked task " + this.tasks[id].getTaskDescription() + 1 + " as done");
     }
 
     public void markTaskAsNotDone(int id) {
         this.tasks[id].setIsMarked(false);
+        System.out.println("marked task " + this.tasks[id].getTaskDescription() + 1 + " as not done");
     }
 }

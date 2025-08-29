@@ -6,11 +6,20 @@ public class Luke {
         String input = keyboard.nextLine();
 
         while (!input.equals("bye")) {
-            if (input.equals("list")) {
+            switch (input.split(" ")[0]) {
+            case "list":
                 list.listTasks();
-            } else {
+                break;
+            case "mark":
+                list.markTaskAsDone(Integer.parseInt(input.split(" ")[1]) - 1);
+                break;
+            case "unmark":
+                list.markTaskAsNotDone(Integer.parseInt(input.split(" ")[1]) - 1);
+                break;
+            default:
                 list.addTask(input);
             }
+
             input = keyboard.nextLine();
         }
         keyboard.close();
