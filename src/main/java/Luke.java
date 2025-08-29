@@ -1,18 +1,18 @@
 import java.util.Scanner;
 
 public class Luke {
-    public static void echo() {
+    public static void echo(List list) {
         Scanner keyboard = new Scanner(System.in);
         String input = keyboard.nextLine();
 
         while (!input.equals("bye")) {
-            String response = "____________________________________________________________\n" +
-                    input + "\n" +
-                    "____________________________________________________________\n";
-            System.out.println(response);
+            if (input.equals("list")) {
+                list.listTasks();
+            } else {
+                list.addTask(input);
+            }
             input = keyboard.nextLine();
         }
-
         keyboard.close();
     }
 
@@ -24,8 +24,9 @@ public class Luke {
                 ____________________________________________________________
                 """;
         System.out.println(greeting);
+        List list1 = new List();
 
-        echo();
+        echo(list1);
 
         String exitResponse = """
                 ____________________________________________________________
