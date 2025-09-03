@@ -6,7 +6,7 @@ public class Luke {
         String input = keyboard.nextLine();
 
         while (!input.equals("bye")) {
-            switch (input.split(" ")[0]) {
+            switch (input.split(" ",2)[0]) {
             case "list":
                 list.listTasks();
                 break;
@@ -16,8 +16,11 @@ public class Luke {
             case "unmark":
                 list.markTaskAsNotDone(Integer.parseInt(input.split(" ")[1]) - 1);
                 break;
+            case "todo":
+                list.addTask(new Todo(input.split(" ",2)[1]));
+                break;
             default:
-                list.addTask(input);
+                System.out.println("Please enter a valid command");
             }
 
             input = keyboard.nextLine();
