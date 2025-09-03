@@ -22,4 +22,12 @@ public class Task {
     public void setIsMarked(boolean marked) {
         this.isMarked = marked;
     }
+
+    public void printTask() {
+        String checkbox = "[ ]";
+        if (this.IsMarked()) {
+            checkbox = "[X]";
+        }
+        System.out.println(checkbox + ' ' + this.taskDescription);
+    }
 }

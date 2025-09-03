@@ -10,11 +10,8 @@ public class List {
 
     public void listTasks() {
         for (int i = 0; i < this.noTasks; i += 1) {
-            String checkbox = "[ ]";
-            if (this.tasks[i].IsMarked()) {
-                checkbox = "[X]";
-            }
-            System.out.println((i + 1) + "." + checkbox + ' ' + this.tasks[i].getTaskDescription());
+            System.out.print((i + 1) + ".");
+            this.tasks[i].printTask();
         }
     }
 
