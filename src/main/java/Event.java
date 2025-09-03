@@ -14,6 +14,6 @@ public class Event extends Task{
         if (this.IsMarked()) {
             checkbox = "[X]";
         }
-        System.out.println("[E]" + checkbox + ' ' + this.getTaskDescription() + "(from:" + this.startDate + "to" + this.endDate + ")");
+        System.out.println("[E]" + checkbox + ' ' + this.getTaskDescription() + " (from:" + this.startDate + " to " + this.endDate + ")");
     }
 }
