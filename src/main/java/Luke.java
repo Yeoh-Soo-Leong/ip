@@ -19,6 +19,11 @@ public class Luke {
             case "todo":
                 list.addTask(new Todo(input.split(" ", 2)[1]));
                 break;
+            case "deadline":
+                String description = input.split(" ", 2)[1].split("/by")[0];
+                String deadline = input.split(" ", 2)[1].split("/by")[1];
+                list.addTask(new Deadline(description, deadline));
+                break;
             default:
                 System.out.println("Please enter a valid command");
             }
