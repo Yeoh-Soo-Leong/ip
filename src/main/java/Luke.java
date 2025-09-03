@@ -20,9 +20,15 @@ public class Luke {
                 list.addTask(new Todo(input.split(" ", 2)[1]));
                 break;
             case "deadline":
-                String description = input.split(" ", 2)[1].split("/by")[0];
+                String deadlineDescription = input.split(" ", 2)[1].split("/by")[0];
                 String deadline = input.split(" ", 2)[1].split("/by")[1];
-                list.addTask(new Deadline(description, deadline));
+                list.addTask(new Deadline(deadlineDescription, deadline));
+                break;
+            case "event":
+                String eventDescription = input.split(" ", 2)[1].split("/from")[0];
+                String startDate = input.split("/from")[1].split("/to")[0];
+                String endDate = input.split("/to")[1];
+                list.addTask(new Event(eventDescription, startDate, endDate));
                 break;
             default:
                 System.out.println("Please enter a valid command");

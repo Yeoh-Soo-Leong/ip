@@ -12,6 +12,6 @@ public class Deadline extends Task {
         if (this.IsMarked()) {
             checkbox = "[X]";
         }
-        System.out.println("[D]" + checkbox + ' ' + this.getTaskDescription() + "(by: " + this.deadline + ")");
+        System.out.println("[D]" + checkbox + ' ' + this.getTaskDescription() + "(by:" + this.deadline + ")");
     }
 }
