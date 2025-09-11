@@ -1,4 +1,4 @@
-public class Event extends Task{
+public class Event extends Task {
     protected String startDate;
     protected String endDate;
 
@@ -10,10 +10,8 @@ public class Event extends Task{
 
     @Override
     public void printTask() {
-        String checkbox = "[ ]";
-        if (this.IsMarked()) {
-            checkbox = "[X]";
-        }
-        System.out.println("[E]" + checkbox + ' ' + this.getTaskDescription() + " (from:" + this.startDate + " to " + this.endDate + ")");
+        System.out.print("[E]");
+        super.printTask();
+        System.out.println(" (from:" + this.startDate + " to " + this.endDate + ")");
     }
 }

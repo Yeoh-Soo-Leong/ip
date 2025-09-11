@@ -8,10 +8,8 @@ public class Deadline extends Task {
 
     @Override
     public void printTask() {
-        String checkbox = "[ ]";
-        if (this.IsMarked()) {
-            checkbox = "[X]";
-        }
-        System.out.println("[D]" + checkbox + ' ' + this.getTaskDescription() + " (by:" + this.deadline + ")");
+        System.out.print("[D]");
+        super.printTask();
+        System.out.println(" (by:" + this.deadline + ")");
     }
 }

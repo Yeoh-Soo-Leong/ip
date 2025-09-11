@@ -5,10 +5,8 @@ public class Todo extends Task {
 
     @Override
     public void printTask() {
-        String checkbox = "[ ]";
-        if (this.IsMarked()) {
-            checkbox = "[X]";
-        }
-        System.out.println("[T]" + checkbox + ' ' + this.getTaskDescription());
+        System.out.print("[T]");
+        super.printTask();
+        System.out.println();
     }
 }
