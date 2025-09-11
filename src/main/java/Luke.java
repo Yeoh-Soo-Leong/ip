@@ -62,7 +62,7 @@ public class Luke {
             } catch (MissingEventToWhen e) {
                 System.err.println("Event to when is missing");
             } catch (Exception e) {
-                System.err.println("Please enter a valid command" + e.getMessage());
+                System.err.println("Please enter a valid command");
             }
 
 
