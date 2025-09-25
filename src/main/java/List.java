@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class List {
-    private final ArrayList<Task> tasks = new ArrayList<Task>();
+    private final ArrayList<Task> tasks = new ArrayList<>();
 
     public void addTask(Task task) {
         tasks.add(task);
