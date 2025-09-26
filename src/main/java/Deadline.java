@@ -12,4 +12,8 @@ public class Deadline extends Task {
         super.printTask();
         System.out.println(" (by:" + this.deadline + ")");
     }
+
+    public String getDeadline() {
+        return deadline;
+    }
 }

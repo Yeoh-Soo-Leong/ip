@@ -3,9 +3,10 @@ import java.util.ArrayList;
 public class List {
     private final ArrayList<Task> tasks = new ArrayList<>();
 
-    public void addTask(Task task) {
+    public void addTask(Task task, FileHandler fileHandler) {
         tasks.add(task);
         System.out.println("added: " + task.getTaskDescription());
+        fileHandler.addTask(task);
     }
 
     public void removeTask(int index) {

@@ -15,7 +15,7 @@ public class Task {
         this.taskDescription = taskDescription;
     }
 
-    public boolean IsMarked() {
+    public boolean isMarked() {
         return isMarked;
     }
 
@@ -25,7 +25,7 @@ public class Task {
 
     public void printTask() {
         String checkbox = "[ ]";
-        if (this.IsMarked()) {
+        if (this.isMarked()) {
             checkbox = "[X]";
         }
         System.out.print(checkbox + ' ' + this.taskDescription);
