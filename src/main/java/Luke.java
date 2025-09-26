@@ -46,6 +46,12 @@ public class Luke {
                     String endDate = input.split(" /to ")[1];
                     list.addTask(new Event(eventDescription, startDate, endDate));
                     break;
+                case "delete":
+                    if (input.split(" ", 2).length < 2) {
+                        throw new MissingDeleteIndex();
+                    }
+                    list.removeTask(Integer.parseInt(input.split(" ", 2)[1]) - 1);
+                    break;
                 default:
                     System.out.println("Please enter a valid command");
                 }
@@ -61,6 +67,8 @@ public class Luke {
                 System.err.println("Event from when is missing");
             } catch (MissingEventToWhen e) {
                 System.err.println("Event to when is missing");
+            } catch (MissingDeleteIndex e) {
+                System.err.println("Delete index missing");
             } catch (Exception e) {
                 System.err.println("Please enter a valid command");
             }
