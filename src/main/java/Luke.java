@@ -50,7 +50,7 @@ public class Luke {
                     if (input.split(" ", 2).length < 2) {
                         throw new MissingDeleteIndex();
                     }
-                    list.removeTask(Integer.parseInt(input.split(" ", 2)[1]) - 1);
+                    list.removeTask(Integer.parseInt(input.split(" ", 2)[1]) - 1, fileHandler);
                     break;
                 default:
                     System.out.println("Please enter a valid command");

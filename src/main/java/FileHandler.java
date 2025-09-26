@@ -2,12 +2,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileHandler {
     private static final String FILENAME = "storedData.txt";
 
     public FileHandler(List list) {
+        System.out.println("Loading stored data...");
         readFile(list);
     }
 
@@ -29,17 +31,17 @@ public class FileHandler {
             //file exists
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                String[] lineArray = line.split("||");
-                // check todo, deadline, event
+                list.loadTask(line);
+
             }
         } catch (FileNotFoundException e) {
             System.out.println("Error opening file: " + FILENAME);
         }
     }
 
-    public void addTask(Task task) {
+    public static void addTask(Task task, boolean append) {
         // append to the back of file
-        try (FileWriter fw = new FileWriter(FILENAME, true)) {
+        try (FileWriter fw = new FileWriter(FILENAME, append)) {
             if (task instanceof Event) {
                 String newTask = "E||" + task.isMarked() + "||" + task.getTaskDescription() + "||" + ((Event) task).getStartDate() + "||" + ((Event) task).getEndDate();
                 fw.write('\n' + newTask);
@@ -55,9 +57,15 @@ public class FileHandler {
         }
     }
 
-//    public static void updateFile(List taskList) {
-//        for (Task task: taskList) {
-//            addTask(task);
-//        }
-//    }
+    public static void updateFile(ArrayList<Task> taskList) {
+        int init = 0;
+        for (Task task: taskList) {
+            if (init == 0) {
+                addTask(task, false);
+                init = 1;
+            } else {
+                addTask(task, true);
+            }
+        }
+    }
 }
