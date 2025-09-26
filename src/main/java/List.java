@@ -2,10 +2,11 @@ public class List {
     private final Task[] tasks = new Task[100];
     private int noTasks = 0;
 
-    public void addTask(Task task) {
+    public void addTask(Task task, FileHandler fileHandler) {
         this.tasks[this.noTasks] = task;
         this.noTasks += 1;
         System.out.println("added: " + task.getTaskDescription());
+        fileHandler.addTask(task);
     }
 
     public void listTasks() {
