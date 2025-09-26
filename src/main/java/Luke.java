@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Luke {
-    public static void echo(List list) {
+    public static void echo(List list, FileHandler fileHandler) {
         Scanner keyboard = new Scanner(System.in);
         String input = keyboard.nextLine();
 
@@ -21,7 +21,7 @@ public class Luke {
                     if (input.split(" ", 2).length < 2) {
                         throw new MissingTodoDescription();
                     }
-                    list.addTask(new Todo(input.split(" ", 2)[1]));
+                    list.addTask(new Todo(input.split(" ", 2)[1]), fileHandler);
                     break;
                 case "deadline":
                     if (input.split(" ", 2).length < 2) {
@@ -31,7 +31,7 @@ public class Luke {
                     }
                     String deadlineDescription = input.split(" ", 2)[1].split(" /by")[0];
                     String deadline = input.split(" ", 2)[1].split(" /by")[1];
-                    list.addTask(new Deadline(deadlineDescription, deadline));
+                    list.addTask(new Deadline(deadlineDescription, deadline), fileHandler);
                     break;
                 case "event":
                     if (input.split(" ", 2).length < 2) {
@@ -44,7 +44,7 @@ public class Luke {
                     String eventDescription = input.split(" ", 2)[1].split(" /from")[0];
                     String startDate = input.split(" /from")[1].split(" /to")[0];
                     String endDate = input.split(" /to ")[1];
-                    list.addTask(new Event(eventDescription, startDate, endDate));
+                    list.addTask(new Event(eventDescription, startDate, endDate), fileHandler);
                     break;
                 case "delete":
                     if (input.split(" ", 2).length < 2) {
@@ -87,9 +87,11 @@ public class Luke {
                 ____________________________________________________________
                 """;
         System.out.println(greeting);
-        List list1 = new List();
 
-        echo(list1);
+        List list1 = new List();
+        FileHandler fileHandler = new FileHandler(list1);
+
+        echo(list1, fileHandler);
 
         String exitResponse = """
                 ____________________________________________________________

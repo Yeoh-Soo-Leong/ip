@@ -14,4 +14,12 @@ public class Event extends Task {
         super.printTask();
         System.out.println(" (from:" + this.startDate + " to " + this.endDate + ")");
     }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
 }
