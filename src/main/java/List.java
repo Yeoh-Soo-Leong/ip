@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 public class List {
@@ -24,12 +26,17 @@ public class List {
                 markTaskAsDone(tasks.size() - 1);
             }
         } else if (lineArray[0].equals("D")) {
-            tasks.add(new Deadline(lineArray[2], lineArray[3]));
+            try {
+                LocalDate deadline = LocalDate.parse(lineArray[3]);
+                tasks.add(new Deadline(lineArray[2], deadline));
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid deadline format, please enter in a yyyy-mm-dd format");
+            }
             System.out.println("added: " + lineArray[2]);
             if (lineArray[1].equals("true")) {
                 markTaskAsDone(tasks.size() - 1);
             }
-        } else if  (lineArray[0].equals("E")) {
+        } else if (lineArray[0].equals("E")) {
             tasks.add(new Event(lineArray[2], lineArray[3], lineArray[4]));
             System.out.println("added: " + lineArray[2]);
             if (lineArray[1].equals("true")) {

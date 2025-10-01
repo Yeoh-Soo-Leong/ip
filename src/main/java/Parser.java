@@ -6,6 +6,8 @@ import exceptions.MissingEventFromWhen;
 import exceptions.MissingEventToWhen;
 import exceptions.MissingTodoDescription;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Parser {
@@ -39,8 +41,14 @@ public class Parser {
                         throw new MissingDeadlineByWhen();
                     }
                     String deadlineDescription = input.split(" ", 2)[1].split(" /by")[0];
-                    String deadline = input.split(" ", 2)[1].split(" /by")[1];
-                    list.addTask(new Deadline(deadlineDescription, deadline), fileHandler);
+                    String deadlineString = input.split(" ", 2)[1].split(" /by ")[1];
+                    try {
+                        LocalDate deadline = LocalDate.parse(deadlineString);
+                        list.addTask(new Deadline(deadlineDescription, deadline), fileHandler);
+                    } catch (DateTimeParseException e) {
+                        System.out.println("Invalid deadline format, please enter in a yyyy-mm-dd format");
+                        break;
+                    }
                     break;
                 case "event":
                     if (input.split(" ", 2).length < 2) {
@@ -51,7 +59,7 @@ public class Parser {
                         throw new MissingEventToWhen();
                     }
                     String eventDescription = input.split(" ", 2)[1].split(" /from")[0];
-                    String startDate = input.split(" /from")[1].split(" /to")[0];
+                    String startDate = input.split(" /from ")[1].split(" /to")[0];
                     String endDate = input.split(" /to ")[1];
                     list.addTask(new Event(eventDescription, startDate, endDate), fileHandler);
                     break;
