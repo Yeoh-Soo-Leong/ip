@@ -44,13 +44,13 @@ public class FileHandler {
         try (FileWriter fw = new FileWriter(FILENAME, append)) {
             if (task instanceof Event) {
                 String newTask = "E||" + task.isMarked() + "||" + task.getTaskDescription() + "||" + ((Event) task).getStartDate() + "||" + ((Event) task).getEndDate();
-                fw.write('\n' + newTask);
+                fw.write(newTask + '\n');
             } else if (task instanceof Deadline) {
                 String newTask = "D||" + task.isMarked() + "||" + task.getTaskDescription() + "||" + ((Deadline) task).getDeadline();
-                fw.write('\n' + newTask);
+                fw.write(newTask + '\n');
             } else if (task instanceof Todo) {
                 String newTask = "T||" + task.isMarked() + "||" + task.getTaskDescription();
-                fw.write('\n' + newTask);
+                fw.write(newTask + '\n');
             }
         } catch (IOException e) {
             System.out.println("Error writing to file");
