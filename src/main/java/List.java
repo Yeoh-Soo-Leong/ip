@@ -57,10 +57,10 @@ public class List {
 
     public void findTask(String string) {
         int j = 1;
-        for (int i = 0; i < tasks.size(); i += 1) {
-            if (tasks.get(i).getTaskDescription().contains(string)) {
+        for (Task task : tasks) {
+            if (task.getTaskDescription().contains(string)) {
                 System.out.print(j + ".");
-                tasks.get(i).printTask();
+                task.printTask();
                 j++;
             }
         }
