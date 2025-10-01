@@ -4,6 +4,7 @@ import exceptions.MissingDeleteIndex;
 import exceptions.MissingEventDescription;
 import exceptions.MissingEventFromWhen;
 import exceptions.MissingEventToWhen;
+import exceptions.MissingFindDescription;
 import exceptions.MissingTodoDescription;
 
 import java.time.LocalDate;
@@ -21,6 +22,12 @@ public class Parser {
                 switch (input.split(" ", 2)[0]) {
                 case "list":
                     list.listTasks();
+                    break;
+                case "find":
+                    if (input.split(" ", 2).length < 2) {
+                        throw new MissingFindDescription();
+                    }
+                    list.findTask(input.split(" ", 2)[1]);
                     break;
                 case "mark":
                     list.markTaskAsDone(Integer.parseInt(input.split(" ")[1]) - 1);
@@ -86,6 +93,8 @@ public class Parser {
                 System.err.println("Event to when is missing");
             } catch (MissingDeleteIndex e) {
                 System.err.println("Delete index missing");
+            } catch (MissingFindDescription e) {
+                System.err.println("Find string missing");
             } catch (Exception e) {
                 System.err.println("Please enter a valid command");
             }
