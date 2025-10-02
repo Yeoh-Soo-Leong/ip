@@ -12,7 +12,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Parser {
-    public Parser(List list, FileHandler fileHandler) {
+    public Parser(TaskList taskList, FileHandler fileHandler) {
 
         Scanner keyboard = new Scanner(System.in);
         String input = keyboard.nextLine();
@@ -21,25 +21,25 @@ public class Parser {
             try {
                 switch (input.split(" ", 2)[0]) {
                 case "list":
-                    list.listTasks();
+                    taskList.listTasks();
                     break;
                 case "find":
                     if (input.split(" ", 2).length < 2) {
                         throw new MissingFindDescription();
                     }
-                    list.findTask(input.split(" ", 2)[1]);
+                    taskList.findTask(input.split(" ", 2)[1]);
                     break;
                 case "mark":
-                    list.markTaskAsDone(Integer.parseInt(input.split(" ")[1]) - 1);
+                    taskList.markTaskAsDone(Integer.parseInt(input.split(" ")[1]) - 1);
                     break;
                 case "unmark":
-                    list.markTaskAsNotDone(Integer.parseInt(input.split(" ")[1]) - 1);
+                    taskList.markTaskAsNotDone(Integer.parseInt(input.split(" ")[1]) - 1);
                     break;
                 case "todo":
                     if (input.split(" ", 2).length < 2) {
                         throw new MissingTodoDescription();
                     }
-                    list.addTask(new Todo(input.split(" ", 2)[1]), fileHandler);
+                    taskList.addTask(new Todo(input.split(" ", 2)[1]), fileHandler);
                     break;
                 case "deadline":
                     if (input.split(" ", 2).length < 2) {
@@ -51,7 +51,7 @@ public class Parser {
                     String deadlineString = input.split(" ", 2)[1].split(" /by ")[1];
                     try {
                         LocalDate deadline = LocalDate.parse(deadlineString);
-                        list.addTask(new Deadline(deadlineDescription, deadline), fileHandler);
+                        taskList.addTask(new Deadline(deadlineDescription, deadline), fileHandler);
                     } catch (DateTimeParseException e) {
                         System.out.println("Invalid deadline format, please enter in a yyyy-mm-dd format");
                         break;
@@ -68,13 +68,13 @@ public class Parser {
                     String eventDescription = input.split(" ", 2)[1].split(" /from")[0];
                     String startDate = input.split(" /from ")[1].split(" /to")[0];
                     String endDate = input.split(" /to ")[1];
-                    list.addTask(new Event(eventDescription, startDate, endDate), fileHandler);
+                    taskList.addTask(new Event(eventDescription, startDate, endDate), fileHandler);
                     break;
                 case "delete":
                     if (input.split(" ", 2).length < 2) {
                         throw new MissingDeleteIndex();
                     }
-                    list.removeTask(Integer.parseInt(input.split(" ", 2)[1]) - 1, fileHandler);
+                    taskList.removeTask(Integer.parseInt(input.split(" ", 2)[1]) - 1, fileHandler);
                     break;
                 default:
                     System.out.println("Please enter a valid command");
