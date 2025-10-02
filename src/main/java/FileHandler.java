@@ -17,7 +17,7 @@ public class FileHandler {
     }
 
     /**
-     * Reads stored data on startup and populates ArrayList with saved tasks
+     * Reads storedData file on startup and populates ArrayList with saved tasks
      *
      * @param taskList the ArrayList of Task classes
      */
