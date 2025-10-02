@@ -11,6 +11,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
+/**
+ * Parser that extracts the command from user input as well as the necessary parameters
+ * then executes the relevant commands
+ */
 public class Parser {
     public Parser(TaskList taskList, FileHandler fileHandler) {
 
