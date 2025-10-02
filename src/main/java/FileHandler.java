@@ -48,7 +48,7 @@ public class FileHandler {
     }
 
     /**
-     * Appends a task to the end of the storedData file
+     * Appends a Task to the end of the storedData file
      *
      * @param task a Task object
      * @param append boolean to determine if Task class is appended to end of file
