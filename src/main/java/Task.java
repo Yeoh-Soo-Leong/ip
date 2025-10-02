@@ -1,3 +1,6 @@
+/**
+ * Represents a Task superclass that extends to Todo, Deadline and Event
+ */
 public class Task {
     private String taskDescription;
     private boolean isMarked;
@@ -23,6 +26,9 @@ public class Task {
         this.isMarked = marked;
     }
 
+    /**
+     * Prints a checkbox indicating if it is checked together with its task description
+     */
     public void printTask() {
         String checkbox = "[ ]";
         if (this.isMarked()) {

@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Manages all interactions with the stored data to save the ArrayList between separate sessions
+ */
 public class FileHandler {
     private static final String FILENAME = "storedData.txt";
 
@@ -13,6 +16,11 @@ public class FileHandler {
         readFile(taskList);
     }
 
+    /**
+     * Reads stored data on startup and populates ArrayList with saved tasks
+     *
+     * @param taskList the ArrayList of Task classes
+     */
     private static void readFile(TaskList taskList) {
         File file = new File(FILENAME);
 
@@ -39,8 +47,13 @@ public class FileHandler {
         }
     }
 
+    /**
+     * Appends a task to the end of the storedData file
+     *
+     * @param task a Task object
+     * @param append boolean to determine if Task class is appended to end of file
+     */
     public static void addTask(Task task, boolean append) {
-        // append to the back of file
         try (FileWriter fw = new FileWriter(FILENAME, append)) {
             if (task instanceof Event) {
                 String newTask = "E||" + task.isMarked() + "||" + task.getTaskDescription() + "||" + ((Event) task).getStartDate() + "||" + ((Event) task).getEndDate();
@@ -57,9 +70,14 @@ public class FileHandler {
         }
     }
 
+    /**
+     * Rewrites storedData file with the current ArrayList of Tasks classes
+     *
+     * @param taskList the ArrayList of Task classes
+     */
     public static void updateFile(ArrayList<Task> taskList) {
         int init = 0;
-        for (Task task: taskList) {
+        for (Task task : taskList) {
             if (init == 0) {
                 addTask(task, false);
                 init = 1;
