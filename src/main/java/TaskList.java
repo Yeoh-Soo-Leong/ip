@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
-public class List {
+public class TaskList {
     private final ArrayList<Task> tasks = new ArrayList<>();
 
     public void addTask(Task task, FileHandler fileHandler) {

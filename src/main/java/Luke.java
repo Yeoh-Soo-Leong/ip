@@ -14,9 +14,9 @@ public class Luke {
     public static void main(String[] args) {
         System.out.println(GREETING);
 
-        List list1 = new List();
-        FileHandler fileHandler = new FileHandler(list1);
-        new Parser(list1, fileHandler);
+        TaskList taskList1 = new TaskList();
+        FileHandler fileHandler = new FileHandler(taskList1);
+        new Parser(taskList1, fileHandler);
 
         System.out.println(EXIT_RESPONSE);
     }

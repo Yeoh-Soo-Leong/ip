@@ -8,12 +8,12 @@ import java.util.Scanner;
 public class FileHandler {
     private static final String FILENAME = "storedData.txt";
 
-    public FileHandler(List list) {
+    public FileHandler(TaskList taskList) {
         System.out.println("Loading stored data...");
-        readFile(list);
+        readFile(taskList);
     }
 
-    private static void readFile(List list) {
+    private static void readFile(TaskList taskList) {
         File file = new File(FILENAME);
 
         if (!file.exists()) {
@@ -31,7 +31,7 @@ public class FileHandler {
             //file exists
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                list.loadTask(line);
+                taskList.loadTask(line);
 
             }
         } catch (FileNotFoundException e) {
